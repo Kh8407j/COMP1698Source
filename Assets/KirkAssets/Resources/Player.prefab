@@ -10,9 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1560149469535627660}
   - component: {fileID: 5298603477976430514}
-  - component: {fileID: 8767689051085326534}
   - component: {fileID: 6633389567389118005}
-  - component: {fileID: 6993599643154479058}
   m_Layer: 3
   m_Name: Graphic
   m_TagString: Untagged
@@ -73,8 +71,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1703476531
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: -271632993, guid: 287322445c2c99645a079d04bee181e7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -87,22 +85,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!70 &8767689051085326534
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2404314515808285638}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 6200000, guid: 20509283f359d8a4f837a8742563d89f, type: 2}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.375, y: 0.375}
-  m_Direction: 0
 --- !u!95 &6633389567389118005
 Animator:
   serializedVersion: 4
@@ -123,27 +105,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!50 &6993599643154479058
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2404314515808285638}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 1
-  m_Constraints: 4
 --- !u!1 &3084481250326454354
 GameObject:
   m_ObjectHideFlags: 0
@@ -155,6 +116,9 @@ GameObject:
   - component: {fileID: 607767387727501784}
   - component: {fileID: 5457509971544956018}
   - component: {fileID: 2144151241025423880}
+  - component: {fileID: 7681719957094944844}
+  - component: {fileID: 1970880365963364686}
+  - component: {fileID: 9101119149485039951}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -206,5 +170,61 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
-  jumpHeight: 7
+  jumpHeight: 5
   gravity: 9.81
+  checkRadius: 0.07
+  centerGap: 4
+  groundLayers:
+    serializedVersion: 2
+    m_Bits: 64
+--- !u!114 &7681719957094944844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3084481250326454354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9414f033ac0aa545ad59d792c5c86ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  maxHealth: 100
+--- !u!70 &1970880365963364686
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3084481250326454354}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: 20509283f359d8a4f837a8742563d89f, type: 2}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 0.375, y: 0.375}
+  m_Direction: 0
+--- !u!50 &9101119149485039951
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3084481250326454354}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 4

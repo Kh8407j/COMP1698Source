@@ -20,7 +20,7 @@ namespace entity
             // Add the inputted amount of health being given to 'health'.
             health += amount;
 
-            // Check that health went down 
+            // Check that health went down or up.
             if(prevHealth > health)
             {
                 
