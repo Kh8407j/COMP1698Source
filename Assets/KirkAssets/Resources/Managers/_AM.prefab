@@ -45,4 +45,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundObject: {fileID: 4305438367951715014, guid: 3a7373971d896a045aadd8d852bed5e3, type: 3}
-  sounds: []
+  sounds:
+  - name: Jump
+    audioClips:
+    - {fileID: 8300000, guid: 2d5fb0ee9e50ae4498208304010c5411, type: 3}
+    - {fileID: 8300000, guid: 2dc7c0dbba6939448bb3f7bd180ca468, type: 3}
+    - {fileID: 8300000, guid: 5e0462ab00a16054baf2510a1b3f27e6, type: 3}
+  - name: Shoot
+    audioClips:
+    - {fileID: 8300000, guid: d09fb37fcb9fbcc46b0cab5774f68c42, type: 3}
+    - {fileID: 8300000, guid: 3d7aa565503ee284d9c365261f8ddabf, type: 3}
+    - {fileID: 8300000, guid: c74e69b8b72737f488f9c801fcfa74ad, type: 3}
+  - name: Hurt
+    audioClips:
+    - {fileID: 8300000, guid: ca257e7701ae24e40ae21e2b97683ecb, type: 3}
+    - {fileID: 8300000, guid: e6456a20f867ac444b1fe65d5040c98e, type: 3}
+    - {fileID: 8300000, guid: 25158a492146ca14a8973f29399b5a14, type: 3}
+  - name: Explode
+    audioClips:
+    - {fileID: 8300000, guid: fe2ef805c483e604faaa8718a42a2449, type: 3}
+    - {fileID: 8300000, guid: 18c34122723d3d04097015abc298124e, type: 3}
+    - {fileID: 8300000, guid: c52a590a3d1799343b6b9f144c74c5b4, type: 3}
+  - name: Pickup
+    audioClips:
+    - {fileID: 8300000, guid: a1d7b2291a3df29419dc99b5d868f29a, type: 3}
+    - {fileID: 8300000, guid: bfb3728d81feba344b70a71c759cbcb7, type: 3}
+    - {fileID: 8300000, guid: 87d9d11b17443504c90d436d5f5e171a, type: 3}
+  - name: Power Up
+    audioClips:
+    - {fileID: 8300000, guid: 8dd890de4d200f14ea93640e97a6745c, type: 3}
+    - {fileID: 8300000, guid: 1947d4f922c3c574783c13ba8b07811b, type: 3}
+    - {fileID: 8300000, guid: d7227a9e86fbe704d98280bb5f27efa2, type: 3}
+  - name: Death
+    audioClips:
+    - {fileID: 8300000, guid: 5bd3aa5732d16a3449062d547c7cde34, type: 3}
