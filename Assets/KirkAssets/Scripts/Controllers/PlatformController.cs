@@ -35,21 +35,24 @@ namespace platformer
         // KH - Calculated player input values.
         private float horInput;
         private float verInput;
+        private bool holdingFire1;
 
-        // KH - The motor script this controller will be collaborating with.
+        // KH - The motor/attack scripts this controller will be collaborating with.
         private PlatformMotor motor;
+        private PlatformAttack attack;
 
         // KH - Called before 'void Start()'.
         private void Awake()
         {
             motor = GetComponent<PlatformMotor>();
+            attack = GetComponent<PlatformAttack>();
         }
 
         // Update is called once per frame
         void Update()
         {
             CalculateInput();
-            OutputToMotor();
+            Output();
         }
 
         // KH - Check for any input the player is giving and apply it into the controller.
@@ -57,10 +60,11 @@ namespace platformer
         {
             horInput = Input.GetAxisRaw("Horizontal");
             verInput = Input.GetAxisRaw("Vertical");
+            holdingFire1 = Input.GetButton("Fire1");
         }
 
-        // KH - Output the received input values to the motor script.
-        void OutputToMotor()
+        // KH - Output the received input values to the output scripts
+        void Output()
         {
             // KH - Check that horizontal inputs aren't being restricted before outputting to motor.
             if (!restrictions.Hor())
@@ -69,6 +73,9 @@ namespace platformer
             // KH - Check that vertical inputs aren't being restricted before outputting to motor.
             if (!restrictions.Ver())
                 motor.SetVerOutput(verInput);
+
+            // KH - Output to the attack script whether fire 1 is being held down.
+            attack.SetFire1Output(holdingFire1);
         }
     }
 }

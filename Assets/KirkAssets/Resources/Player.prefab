@@ -217,7 +217,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4f9a54673ab0114bbcaf70d3edf1b3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireballBlueprint: {fileID: 0}
+  projectilePrefab: {fileID: 3637456682864103636, guid: e3bf93b929a40474d89d6b1dafba5469, type: 3}
   firepoint: {fileID: 3804369773121114975}
   attackCooldownTime: 0.1
 --- !u!70 &1970880365963364686

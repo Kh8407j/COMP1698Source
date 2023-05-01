@@ -232,25 +232,6 @@ namespace platformer
             // KH - Return the final calculations.
             return upWallCheck || downWallCheck;
         }
-        #endregion
-
-        // KH - Method for seeing if the motor is attempting to jump.
-        bool PressedJump()
-        {
-            return verOutput > 0.5f && !jumpTrigger;
-        }
-
-        // KH - Method for seeing if the motor is no longer trying to jump.
-        bool LiftedJump()
-        {
-            return verOutput < 0.5f;
-        }
-
-        // KH - Method to get the value of 'moveDir'.
-        public Vector3 GetMoveDir()
-        {
-            return moveDir;
-        }
 
         // KH - Method to get the value of 'onGround'.
         public bool GetOnGround()
@@ -274,6 +255,31 @@ namespace platformer
         public bool GetOnRightWall()
         {
             return onRightWall;
+        }
+        #endregion
+
+        // KH - Method for seeing if the motor is attempting to jump.
+        bool PressedJump()
+        {
+            return verOutput > 0.5f && !jumpTrigger;
+        }
+
+        // KH - Method for seeing if the motor is no longer trying to jump.
+        bool LiftedJump()
+        {
+            return verOutput < 0.5f;
+        }
+
+        // KH - Method to get the value of 'moveDir'.
+        public Vector3 GetMoveDir()
+        {
+            return moveDir;
+        }
+
+        // KH - Method to get the value of 'facingRight'.
+        public bool GetFacingRight()
+        {
+            return facingRight;
         }
 
         // KH - Method to set the value of 'gravity'.

@@ -10,10 +10,13 @@ namespace platformer
         [Header("Projectile Statistics")]
         [SerializeField] float damage = 10f;
         [SerializeField] float lifeTime = 5f;
+        [SerializeField] float moveSpeedX = 5f;
+        [SerializeField] float moveSpeedY;
+        [SerializeField] bool facingRight = true;
+        private Vector2 moveDir;
 
         [Header("Misc..")]
         [SerializeField] bool flipSpriteTowardsDirection = true;
-        private Vector2 moveDir;
 
         // KH - Component references.
         private SpriteRenderer sr;
