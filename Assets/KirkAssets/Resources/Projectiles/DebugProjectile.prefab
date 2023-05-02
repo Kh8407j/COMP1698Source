@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6242002142408374925}
-  - component: {fileID: 3272184129014606017}
+  - component: {fileID: 6457909906185482002}
   m_Layer: 0
   m_Name: DebugProjectile
   m_TagString: Untagged
@@ -33,7 +33,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3272184129014606017
+--- !u!114 &6457909906185482002
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -42,11 +42,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 3637456682864103636}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 37cc18e8466757046ad1a3d08d1800a0, type: 3}
+  m_Script: {fileID: 11500000, guid: e130fd9e36b710f4ab81c686a86fd3f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 10
   lifeTime: 5
+  facingRight: 1
   flipSpriteTowardsDirection: 1
 --- !u!1 &9115451425017772743
 GameObject:

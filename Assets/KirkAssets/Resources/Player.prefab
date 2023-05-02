@@ -219,7 +219,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 3637456682864103636, guid: e3bf93b929a40474d89d6b1dafba5469, type: 3}
   firepoint: {fileID: 3804369773121114975}
-  attackCooldownTime: 0.1
+  moveSpeedX: 5
+  moveSpeedY: 0
+  attackCooldownTime: 0.2
 --- !u!70 &1970880365963364686
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

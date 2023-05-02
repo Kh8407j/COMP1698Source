@@ -28,6 +28,7 @@ namespace platformer
         private float yVel;
         private bool jumpTrigger;
         private bool facingRight = true;
+        private float xScaleAbs;
         private float gravity = 9.81f;
 
         // KH - Component references.
@@ -47,6 +48,7 @@ namespace platformer
         private void FixedUpdate()
         {
             Move();
+            FaceDirection();
 
             // KH - Make the motor jump if it's holding the correct input and is on ground.
             if (PressedJump() && onGround)
@@ -69,12 +71,6 @@ namespace platformer
             // KH - If the motor hits the roof while moving up, stop them moving upwards.
             if (onRoof && yVel > 0f)
                 HitRoof();
-
-            // KH - Make the motor's graphic sprite face towards the direction it's facing.
-            if (facingRight)
-                sr.flipX = false;
-            else
-                sr.flipX = true;
         }
 
         // KH - Surroundings collision debugging.
@@ -148,6 +144,19 @@ namespace platformer
             // KH - Move the motor upwards, set 'jumpTrigger' to true to prevent repeatedly jumping while holding the input.
             jumpTrigger = true;
             yVel = jumpHeight;
+        }
+
+        // KH - Make the motor's graphics face the direction it's facing towards.
+        void FaceDirection()
+        {
+            // KH - Calculate what the X scale of the motor's transform should be.
+            xScaleAbs = Mathf.Abs(transform.localScale.x);
+
+            if (!facingRight)
+                xScaleAbs = -xScaleAbs;
+
+            // KH - Apply the final calculations onto the motor's transform.
+            transform.localScale = new Vector2(xScaleAbs, transform.localScale.y);
         }
 
         // KH - Zero or reset all output values.

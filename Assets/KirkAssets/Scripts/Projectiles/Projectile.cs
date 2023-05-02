@@ -10,9 +10,8 @@ namespace platformer
         [Header("Projectile Statistics")]
         [SerializeField] float damage = 10f;
         [SerializeField] float lifeTime = 5f;
-        [SerializeField] float moveSpeedX = 5f;
-        [SerializeField] float moveSpeedY;
         [SerializeField] bool facingRight = true;
+        private float xScaleAbs;
         private Vector2 moveDir;
 
         [Header("Misc..")]
@@ -38,10 +37,9 @@ namespace platformer
         }
 
         // KH - Called on a constant timeline.
-        private void FixedUpdate()
+        void FixedUpdate()
         {
-            // KH - Make the projectile move in the inputted direction.
-            transform.Translate(moveDir * Time.fixedDeltaTime);
+            Move();
         }
 
         // KH - Called when a collider enter's this gameobject's trigger.
@@ -57,6 +55,20 @@ namespace platformer
             }
         }
 
+        // KH - Make the projectile move.
+        public virtual void Move()
+        {
+            // KH - Calculate where the projectile is going to move towards.
+            Vector2 calcMoveDir = moveDir;
+
+            // KH - Make sure the projectile is moving towards the direction it's facing.
+            if (!facingRight)
+                calcMoveDir = new Vector2(-calcMoveDir.x, calcMoveDir.y);
+
+            // KH - Make the projectile move in the inputted direction.
+            transform.Translate(calcMoveDir * Time.fixedDeltaTime);
+        }
+
         // KH - Destroy the projectile out of the scene.
         public virtual void DestroyProjectile()
         {
@@ -69,15 +81,27 @@ namespace platformer
         {
             moveDir = output;
 
-            // KH - Check if the projectile's sprite should be facing the direction it's moving towards.
-            if (flipSpriteTowardsDirection)
-            {
-                // KH - Make the projectile face the direction it's moving in.
-                if (moveDir.x > 0f)
-                    sr.flipX = false;
-                else if (moveDir.x < 0f)
-                    sr.flipX = true;
-            }
+            // KH - Make sure the projectile graphics are faced towards the direction it's moving it.
+            FaceDirection();
+        }
+
+        // KH - Make the projectile's graphics face the direction it's facing towards.
+        void FaceDirection()
+        {
+            // KH - Calculate what the X scale of the transform should be.
+            xScaleAbs = Mathf.Abs(transform.localScale.x);
+
+            if (!facingRight)
+                xScaleAbs = -xScaleAbs;
+
+            // KH - Apply the final calculations onto the transform.
+            transform.localScale = new Vector2(xScaleAbs, transform.localScale.y);
+        }
+
+        // KH - Method to set the value of 'facingRight'.
+        public void SetFacingRight(bool output)
+        {
+            facingRight = output;
         }
     }
 }
