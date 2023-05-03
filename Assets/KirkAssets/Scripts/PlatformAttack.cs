@@ -26,7 +26,7 @@ namespace platformer
         private bool attackTrigger;
 
         // KH - Output values from controller scripts.
-        private bool fire1Output;
+        private int fire1Output;
 
         // KH - Collaborating scripts and component references.
         private PlatformMotor motor;
@@ -90,7 +90,7 @@ namespace platformer
         }
 
         // KH - Method to set the value of 'fire1Output'.
-        public void SetFire1Output(bool output)
+        public void SetFire1Output(int output)
         {
             fire1Output = output;
         }
@@ -98,13 +98,13 @@ namespace platformer
         // KH - Method to see if the attack trigger has been pressed.
         bool PressedAttack()
         {
-            return fire1Output && !attackTrigger;
+            return fire1Output == 1 && !attackTrigger;
         }
 
         // KH - Method to see if the attack trigger has been let go.
         bool LiftedAttack()
         {
-            return !fire1Output;
+            return fire1Output == 0;
         }
     }
 }

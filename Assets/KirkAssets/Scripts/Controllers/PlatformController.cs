@@ -29,13 +29,11 @@ namespace platformer
         }
         public Restrictions restrictions = new Restrictions();
 
-        // KH - Stores the value for the ultrasonic sensor reading on the Arduino kit.
-        private float ultrasonicSensorDistance;
-
         // KH - Calculated player input values.
-        private float horInput;
-        private float verInput;
-        private bool holdingFire1;
+        private int horInput;
+        private int verInput;
+        private int holdingFire1;
+        private int ultrasonicSensor;
 
         // KH - The motor/attack scripts this controller will be collaborating with.
         private PlatformMotor motor;
@@ -58,9 +56,16 @@ namespace platformer
         // KH - Check for any input the player is giving and apply it into the controller.
         void CalculateInput()
         {
-            horInput = Input.GetAxisRaw("Horizontal");
+            // KH - Previous keyboard input controls, replacing with Arduino controls.
+            /*horInput = Input.GetAxisRaw("Horizontal");
             verInput = Input.GetAxisRaw("Vertical");
-            holdingFire1 = Input.GetButton("Fire1");
+            holdingFire1 = Input.GetButton("Fire1");*/
+
+            // KH - Arduino inputs.
+            verInput = ArduinoController.jumpState;
+            holdingFire1 = ArduinoController.fireState;
+            ultrasonicSensor = ArduinoController.power;
+            //Debug.Log(ultrasonicSensor);
         }
 
         // KH - Output the received input values to the output scripts
@@ -78,4 +83,4 @@ namespace platformer
             attack.SetFire1Output(holdingFire1);
         }
     }
-}
+};

@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 582683834879109832}
   - component: {fileID: 1343958533306403189}
   - component: {fileID: 835144214923069581}
+  - component: {fileID: -4868873556367435250}
   - component: {fileID: 5410103921767773413}
   m_Layer: 0
   m_Name: GroundEnemy
@@ -69,8 +70,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9414f033ac0aa545ad59d792c5c86ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
-  maxHealth: 100
+  health: 10
+  maxHealth: 10
 --- !u!114 &582683834879109832
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -78,7 +79,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5284507585205309737}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: be8c0459f9474ef47902105496fc577e, type: 3}
   m_Name: 
@@ -120,6 +121,26 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 1, y: 1}
   m_Direction: 0
+--- !u!95 &-4868873556367435250
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5284507585205309737}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &5410103921767773413
 MonoBehaviour:
   m_ObjectHideFlags: 0
