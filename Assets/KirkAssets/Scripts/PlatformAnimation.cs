@@ -16,8 +16,8 @@ namespace platformer
         private void Awake()
         {
             anim = GetComponent<Animator>();
-            motor = GetComponentInParent<PlatformMotor>();
-            health = GetComponentInParent<Health>();
+            motor = GetComponent<PlatformMotor>();
+            health = GetComponent<Health>();
         }
 
         // Update is called once per frame

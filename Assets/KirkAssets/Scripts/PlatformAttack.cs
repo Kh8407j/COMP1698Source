@@ -1,4 +1,5 @@
 // KHOGDEN 001115381
+using audio;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,6 +11,10 @@ namespace platformer
         [Header("Projectile")]
         [SerializeField] GameObject projectilePrefab;
         [SerializeField] Transform firepoint;
+
+        [Header("Animation")]
+        [SerializeField] string attackAnimation;
+        [SerializeField] string resetAnimation;
 
         // KH - The velocity that each fired projectile will start off with.
         [SerializeField] float moveSpeedX = 5f;
@@ -23,22 +28,24 @@ namespace platformer
         // KH - Output values from controller scripts.
         private bool fire1Output;
 
-        // KH - Collaborating scripts.
+        // KH - Collaborating scripts and component references.
         private PlatformMotor motor;
+        private Animator anim;
 
         // KH - Called before 'void Start()'.
         private void Awake()
         {
             motor = GetComponent<PlatformMotor>();
+            anim = GetComponent<Animator>();
         }
 
         // Update is called once per frame
         void Update()
         {
-            // KH - If the fire input is held, fire a projectile.
+            // KH - If the fire input is held, perform attack animation. Animation is expected to have an event function.
             if (PressedAttack() && ReadyToAttack())
-                Fire();
-            else if(LiftedAttack())
+                anim.Play(attackAnimation);
+            else if (LiftedAttack())
                 attackTrigger = false;
 
             // KH - Continously tick down the cooldown timer till it's at zero. Prevent going over negative.
@@ -49,7 +56,7 @@ namespace platformer
         }
 
         // KH - Fire a projectile.
-        void Fire()
+        public void Fire()
         {
             // KH - Reset the attack cooldown timer to prevent this void being so much in a short time span.
             attackCooldownTimer = attackCooldownTime;
@@ -59,11 +66,21 @@ namespace platformer
             Projectile projectileScript = projectileObj.GetComponent<Projectile>();
 
             // KH - Make the projectile face and move towards the same direction the motor is facing.
-            projectileScript.SetMoveDir(new Vector2(moveSpeedX, moveSpeedY));
             projectileScript.SetFacingRight(motor.GetFacingRight());
+            projectileScript.SetMoveDir(new Vector2(moveSpeedX, moveSpeedY));
+
+            // KH - Play the shoot sound.
+            NextSoundAttributes soundAttributes = new NextSoundAttributes();
+            AudioManager.control.PlayAudio("Shoot", soundAttributes);
 
             // KH - Set 'attackTrigger' to true to make sure the output cannot be held to repeatedly fire.
             attackTrigger = true;
+        }
+
+        // KH - Reset the animator to play the inputted animation in 'resetAnimation'.
+        public void ResetAnimation()
+        {
+            anim.Play(resetAnimation);
         }
 
         // KH - Method to see if attacking is ready.

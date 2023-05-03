@@ -50,7 +50,8 @@ namespace platformer
             // KH - Check that the hit object is damageable.
             if(health != null)
             {
-                // KH - Destroy the projectile since it's now hit a target.
+                // KH - Damage the damagable object. Destroy the projectile since it's now hit a target.
+                health.ChangeHealth(-damage);
                 DestroyProjectile();
             }
         }
