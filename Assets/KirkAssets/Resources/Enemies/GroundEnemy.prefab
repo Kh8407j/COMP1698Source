@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 582683834879109832}
   - component: {fileID: 1343958533306403189}
   - component: {fileID: 835144214923069581}
-  - component: {fileID: -4868873556367435250}
   - component: {fileID: 5410103921767773413}
   m_Layer: 0
   m_Name: GroundEnemy
@@ -121,26 +120,6 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 1, y: 1}
   m_Direction: 0
---- !u!95 &-4868873556367435250
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5284507585205309737}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &5410103921767773413
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -154,6 +133,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   instantiator: {fileID: 0}
+  damage: 20
 --- !u!1 &6766802708079402491
 GameObject:
   m_ObjectHideFlags: 0

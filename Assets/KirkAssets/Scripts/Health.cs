@@ -22,6 +22,9 @@ namespace platformer
             // KH - Add the inputted amount of health being given to 'health'.
             health += amount;
 
+            // AO - Update health in manager for UI
+            systems.GameManager.CalculateHealth(+amount);
+
             // KH - Check that health went down or up.
             if (prevHealth > health)
             {

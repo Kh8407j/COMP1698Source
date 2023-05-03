@@ -4,5 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/AyoAssets/Scenes/MainMenu.unity
+    guid: 371c8a70dfc79ee4eb7ee7ecdd49d3ba
+  - enabled: 1
+    path: Assets/KirkAssets/Scenes/Game.unity
+    guid: 809b0c9434411c040855ea188780b41d
   m_configObjects: {}
