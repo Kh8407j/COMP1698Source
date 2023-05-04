@@ -84,6 +84,18 @@ namespace platformer
             else
                 motor.SetGravityDivide(1f);
 
+            // AO - If the player holds their hand to the ultrasonic sensor, fire state is switched to max.
+            if (ultrasonicSensor == 0)
+            {
+                attack.fireState = PlatformAttack.FireState.max;
+                Debug.Log("Fire State max");
+            }
+            else
+            {
+                attack.fireState = PlatformAttack.FireState.min;
+                Debug.Log("Fire State min");
+            }
+
             // KH - Output to the attack script whether fire 1 is being held down.
             attack.SetFire1Output(holdingFire1);
         }

@@ -17,7 +17,7 @@ namespace platformer
         [SerializeField] string resetAnimation;
 
         // KH - The velocity that each fired projectile will start off with.
-        [SerializeField] float moveSpeedX = 5f;
+        [SerializeField] float moveSpeedX;
         [SerializeField] float moveSpeedY;
 
         [Header("Misc..")]
@@ -31,6 +31,13 @@ namespace platformer
         // KH - Collaborating scripts and component references.
         private PlatformMotor motor;
         private Animator anim;
+
+        // AO - Public fire states
+        public enum FireState {min, max};
+        public FireState fireState;
+
+        // AO - Scale for projectile based on fire state
+        [SerializeField] float fireScale;
 
         // KH - Called before 'void Start()'.
         private void Awake()
@@ -53,6 +60,27 @@ namespace platformer
                 attackCooldownTimer -= Time.deltaTime;
             else if(attackCooldownTimer < 0f)
                 attackCooldownTimer = 0f;
+
+            // AO - Switch fire states
+            if (PressedAttack())
+            {
+                switch (fireState)
+                {
+                    case FireState.min:
+                        {
+                            //projectileObj.transform.localScale = new Vector2(2, 2);
+                            moveSpeedX = 5f;
+                            fireScale = 1f;
+                        }
+                        break;
+                    case FireState.max:
+                        {
+                            moveSpeedX = 2.5f;
+                            fireScale = 2f;
+                        }
+                        break;
+                }
+            }
         }
 
         // KH - Fire a projectile.
@@ -68,6 +96,9 @@ namespace platformer
             // KH - Make the projectile face and move towards the same direction the motor is facing.
             projectileScript.SetFacingRight(motor.GetFacingRight());
             projectileScript.SetMoveDir(new Vector2(moveSpeedX, moveSpeedY));
+
+            // AO - Scale projectile based on fire state
+            projectileScript.SetScale(fireScale);
 
             // KH - Play the shoot sound.
             NextSoundAttributes soundAttributes = new NextSoundAttributes();

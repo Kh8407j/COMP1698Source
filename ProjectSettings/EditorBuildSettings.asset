@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/KirkAssets/Scenes/Game.unity
     guid: 809b0c9434411c040855ea188780b41d
+  - enabled: 1
+    path: Assets/AyoAssets/Scenes/Systems.unity
+    guid: b221b3ee67ba60f448f8440f00a9d5ef
   m_configObjects: {}

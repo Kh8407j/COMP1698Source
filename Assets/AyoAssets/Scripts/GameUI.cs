@@ -8,10 +8,10 @@ using systems;
 
 public class GameUI : MonoBehaviour
 {
-    public enum GameState { MainMenu, Paused, Playing, GameOver };
+    public enum GameState { MainMenu, Systems, Paused, Playing, GameOver };
     public GameState currentState;
     public TextMeshProUGUI healthText;
-    public GameObject allGameUI, mainMenuPanel, pauseMenuPanel, gameOverPanel, titleText;
+    public GameObject allGameUI, mainMenuPanel, systemsPanel, pauseMenuPanel, gameOverPanel, titleText;
 
     // KH
     [SerializeField] Text scoreDisplay;
@@ -23,7 +23,11 @@ public class GameUI : MonoBehaviour
         {
             CheckGameState(GameState.MainMenu);
         }
-        else
+        else if (SceneManager.GetActiveScene().name == "Systems")
+        {
+            CheckGameState(GameState.Systems);
+        }
+        else 
         {
             CheckGameState(GameState.Playing);
         }
@@ -36,6 +40,10 @@ public class GameUI : MonoBehaviour
         {
             case GameState.MainMenu:
                 MainMenuSetup();
+                break;
+            case GameState.Systems:
+                SystemsSetup();
+                Debug.Log("Systems");
                 break;
             case GameState.Paused:
                 GamePaused();
@@ -60,6 +68,17 @@ public class GameUI : MonoBehaviour
     {
         allGameUI.SetActive(false);
         mainMenuPanel.SetActive(true);
+        systemsPanel.SetActive(false);
+        pauseMenuPanel.SetActive(false);
+        gameOverPanel.SetActive(false);
+        titleText.SetActive(true);
+    }
+
+    public void SystemsSetup()
+    {
+        allGameUI.SetActive(false);
+        mainMenuPanel.SetActive(false);
+        systemsPanel.SetActive(true);
         pauseMenuPanel.SetActive(false);
         gameOverPanel.SetActive(false);
         titleText.SetActive(true);
@@ -69,6 +88,7 @@ public class GameUI : MonoBehaviour
     {
         allGameUI.SetActive(true);
         mainMenuPanel.SetActive(false);
+        systemsPanel.SetActive(false);
         pauseMenuPanel.SetActive(false);
         gameOverPanel.SetActive(false);
         titleText.SetActive(false);
@@ -78,6 +98,7 @@ public class GameUI : MonoBehaviour
     {
         allGameUI.SetActive(true);
         mainMenuPanel.SetActive(false);
+        systemsPanel.SetActive(false);
         pauseMenuPanel.SetActive(true);
         gameOverPanel.SetActive(false);
         titleText.SetActive(true);
@@ -87,6 +108,7 @@ public class GameUI : MonoBehaviour
     {
         allGameUI.SetActive(false);
         mainMenuPanel.SetActive(false);
+        systemsPanel.SetActive(false);
         pauseMenuPanel.SetActive(false);
         gameOverPanel.SetActive(true);
         titleText.SetActive(true);
@@ -138,6 +160,12 @@ public class GameUI : MonoBehaviour
     public void GoToMainMenu()
     {
         SceneManager.LoadScene("MainMenu");
+        CheckGameState(GameState.MainMenu);
+    }
+
+    public void GoToSystems()
+    {
+        SceneManager.LoadScene("Systems");
         CheckGameState(GameState.MainMenu);
     }
 

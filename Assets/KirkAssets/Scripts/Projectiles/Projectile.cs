@@ -45,14 +45,22 @@ namespace platformer
         // KH - Called when a collider enter's this gameobject's trigger.
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            Health health = collision.GetComponentInParent<Health>();
-
-            // KH - Check that the hit object is damageable.
-            if(health != null)
+            // AO - Checks if collider is NOT player type
+            if (collision.gameObject.CompareTag("Player"))
             {
-                // KH - Damage the damagable object. Destroy the projectile since it's now hit a target.
-                health.ChangeHealth(-damage);
-                DestroyProjectile();
+                //DO NOTHING
+            }
+            else
+            {
+                Health health = collision.GetComponentInParent<Health>();
+
+                // KH - Check that the hit object is damageable.
+                if (health != null)
+                {
+                    // KH - Damage the damagable object. Destroy the projectile since it's now hit a target.
+                    health.ChangeHealth(-damage);
+                    DestroyProjectile();
+                }
             }
         }
 
@@ -103,6 +111,15 @@ namespace platformer
         public void SetFacingRight(bool output)
         {
             facingRight = output;
+        }
+
+        // AO - Method to scale projectile and translate from fire point to avoid self-collision and correct position
+        public void SetScale(float scale)
+        {
+            //transform.position = new Vector(0, 4, 0);
+            //transform.position += Vector3.up * 3f;
+            transform.position = new Vector3(transform.position.x + 0.175f, transform.position.y + 0.175f, transform.position.z);
+            transform.localScale *= scale;
         }
     }
 }
