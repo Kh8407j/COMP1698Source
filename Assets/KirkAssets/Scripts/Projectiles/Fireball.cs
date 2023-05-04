@@ -7,6 +7,10 @@ namespace platformer
 {
     public class Fireball : Projectile
     {
-
+        // KH - Called on first  frame.
+        void Start()
+        {
+            
+        }
     }
 }

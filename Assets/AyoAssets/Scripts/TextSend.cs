@@ -6,18 +6,20 @@ using TMPro;
 
 public class TextSend : MonoBehaviour
 {
-    public InputField barField;
-    public string barValue;
-    // Start is called before the first frame update
-    void Start()
+    public TMP_InputField  barField;
+    void Awake()
     {
-        
+        //barField = null;
+    }
+    // Start is called before the first frame update
+    void Update()
+    {
+        updateBar();
     }
 
     // Update is called once per frame
-    void Update()
+    public void updateBar()
     {
-        barValue = barField.text;
-        Debug.Log("barValue is " + barValue);
+        ManagerVar.Instance.barValue = barField.text;
     }
 }

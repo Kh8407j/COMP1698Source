@@ -1069,7 +1069,9 @@ GameObject:
   - component: {fileID: 147182331342545367}
   - component: {fileID: 8892011300902802241}
   - component: {fileID: 4963426843239260024}
+  - component: {fileID: 930351326318335212}
   - component: {fileID: 7955839340421140269}
+  - component: {fileID: 1888530891}
   m_Layer: 5
   m_Name: BarcodeEntry
   m_TagString: Untagged
@@ -1136,6 +1138,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &930351326318335212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2532453817742546896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a39b478274f7b2b4aa59a02fbc537e05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  barField: {fileID: 7955839340421140269}
+  barValue: 
 --- !u!114 &7955839340421140269
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1197,7 +1213,19 @@ MonoBehaviour:
   m_CharacterLimit: 0
   m_OnEndEdit:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11500000, guid: a39b478274f7b2b4aa59a02fbc537e05, type: 3}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnSubmit:
     m_PersistentCalls:
       m_Calls: []
@@ -1234,6 +1262,20 @@ MonoBehaviour:
   m_isRichTextEditingAllowed: 0
   m_LineLimit: 0
   m_InputValidator: {fileID: 0}
+--- !u!114 &1888530891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2532453817742546896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a39b478274f7b2b4aa59a02fbc537e05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  barField: {fileID: 0}
+  barValue: 
 --- !u!1 &2605037401955877811
 GameObject:
   m_ObjectHideFlags: 0

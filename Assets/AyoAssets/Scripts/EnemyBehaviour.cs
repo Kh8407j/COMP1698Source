@@ -19,6 +19,7 @@ namespace platformer // KH
         private void Awake()
         {
             health = GetComponent<Health>();
+            damage = ManagerVar.Instance.enemyDamage;
         }
 
         // Start is called before the first frame update

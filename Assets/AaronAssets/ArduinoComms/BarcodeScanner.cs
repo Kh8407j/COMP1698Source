@@ -6,9 +6,7 @@ using System.Collections;
 
 public class BarcodeScanner : MonoBehaviour
 {
-    public string barcode = "3274080005003"; // Replace with your barcode value
-    public int enemyDamage;
-    public int nutritionGrade;
+    
 
     void Start()
     {
@@ -17,7 +15,7 @@ public class BarcodeScanner : MonoBehaviour
 
     IEnumerator GetProductInfo()
     {
-        string url = "https://world.openfoodfacts.org/api/v0/product/" + barcode + ".json";
+        string url = "https://world.openfoodfacts.org/api/v0/product/" + ManagerVar.Instance.barValue + ".json";
 
         UnityWebRequest request = UnityWebRequest.Get(url);
 
@@ -38,16 +36,16 @@ public class BarcodeScanner : MonoBehaviour
     reader.Read();
     if (int.TryParse((string)reader.Value, out int novaGroups))
     {
-        enemyDamage = novaGroups;
-        Debug.Log("Nova Group: " + enemyDamage);
+        ManagerVar.Instance.enemyDamage = novaGroups;
+        Debug.Log("Nova Group: " + ManagerVar.Instance.enemyDamage);
     }
 }
 else if (reader.TokenType == JsonToken.PropertyName && (string)reader.Value == "nutrition_grades")
 {
     reader.Read();
     char nutritionGradeChar = ((string)reader.Value)[0];
-    nutritionGrade = char.ToUpper(nutritionGradeChar) - 64;
-    Debug.Log("Numeric Nutrition Grade: " + nutritionGrade);
+    ManagerVar.Instance.nutritionGrade = char.ToUpper(nutritionGradeChar) - 64;
+    Debug.Log("Numeric Nutrition Grade: " + ManagerVar.Instance.nutritionGrade);
 }
                 }
             }

@@ -35,6 +35,11 @@ namespace systems
             gameUI.UpdateHealth();
         }
 
+        void Update()
+        {
+            score = ManagerVar.Instance.score;
+        }
+
         // KH - Reset the statistics of the session.
         public void ResetSessionStatistics()
         {
@@ -52,6 +57,11 @@ namespace systems
         public int GetScore()
         {
             return score;
+        }
+
+        public void SetScore(int output)
+        {
+            score = output;
         }
 
         // KH - Method to access the pause system.

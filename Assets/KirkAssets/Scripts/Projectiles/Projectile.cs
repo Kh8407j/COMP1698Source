@@ -24,6 +24,7 @@ namespace platformer
         private void Awake()
         {
             sr = GetComponentInChildren<SpriteRenderer>();
+            damage = ManagerVar.Instance.nutritionGrade;
         }
 
         // KH - Called upon every frame.
@@ -120,6 +121,11 @@ namespace platformer
             //transform.position += Vector3.up * 3f;
             transform.position = new Vector3(transform.position.x + 0.175f, transform.position.y + 0.175f, transform.position.z);
             transform.localScale *= scale;
+        }
+
+        void SetDamage(float output)
+        {
+            damage = output;
         }
     }
 }

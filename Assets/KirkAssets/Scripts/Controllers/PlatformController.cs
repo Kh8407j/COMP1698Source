@@ -62,9 +62,9 @@ namespace platformer
             //holdingFire1 = Mathf.RoundToInt(Input.GetAxisRaw("Fire1"));
 
             // KH - Arduino inputs.
-            verInput = ArduinoController.jumpState;
-            holdingFire1 = ArduinoController.fireState;
-            ultrasonicSensor = ArduinoController.power;
+            verInput = ManagerVar.Instance.jumpState;
+            holdingFire1 = ManagerVar.Instance.fireState;
+            ultrasonicSensor = ManagerVar.Instance.power;
         }
 
         // KH - Output the received input values to the output scripts

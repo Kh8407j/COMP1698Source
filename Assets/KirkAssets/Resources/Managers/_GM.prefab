@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6906841144735359234}
   - component: {fileID: 8727413079683065719}
   - component: {fileID: 5605812983773130124}
+  - component: {fileID: 6484099434103658093}
   m_Layer: 0
   m_Name: _GM
   m_TagString: Untagged
@@ -58,3 +59,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paused: 0
+--- !u!114 &6484099434103658093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2830559046019541791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47839fb36ca838c45b7adae9f5ed43fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shouldSave: 0
+  lastTagID: 
+  jumpState: 0
+  fireState: 0
+  power: 0
+  enemyDamage: 0
+  nutritionGrade: 0
