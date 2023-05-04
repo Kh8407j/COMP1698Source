@@ -57,15 +57,14 @@ namespace platformer
         void CalculateInput()
         {
             // KH - Previous keyboard input controls, replacing with Arduino controls.
-            /*horInput = Input.GetAxisRaw("Horizontal");
-            verInput = Input.GetAxisRaw("Vertical");
-            holdingFire1 = Input.GetButton("Fire1");*/
+            horInput = Mathf.RoundToInt(Input.GetAxisRaw("Horizontal"));
+            verInput = Mathf.RoundToInt(Input.GetAxisRaw("Vertical"));
+            holdingFire1 = Mathf.RoundToInt(Input.GetAxisRaw("Fire1"));
 
             // KH - Arduino inputs.
-            verInput = ArduinoController.jumpState;
-            holdingFire1 = ArduinoController.fireState;
-            ultrasonicSensor = ArduinoController.power;
-            //Debug.Log(ultrasonicSensor);
+            //verInput = ArduinoController.jumpState;
+            //holdingFire1 = ArduinoController.fireState;
+            //ultrasonicSensor = ArduinoController.power;
         }
 
         // KH - Output the received input values to the output scripts
@@ -78,6 +77,12 @@ namespace platformer
             // KH - Check that vertical inputs aren't being restricted before outputting to motor.
             if (!restrictions.Ver())
                 motor.SetVerOutput(verInput);
+
+            // KH - If the player holds their hand to the ultrasonic sensor, the motor's gravity will lower.
+            if (ultrasonicSensor == 0)
+                motor.SetGravityDivide(2f);
+            else
+                motor.SetGravityDivide(1f);
 
             // KH - Output to the attack script whether fire 1 is being held down.
             attack.SetFire1Output(holdingFire1);

@@ -9,6 +9,8 @@ namespace systems
     {
         public static GameManager control; // KH - Allows other scripts to access the game manager.
         private Pause pause; // KH - Access to the pause system.
+        private int score; // KH - The player's current score.
+
         static GameUI gameUI; // AO - Sets GameUI object
         // AO - pause method
         public static bool gamePaused;
@@ -33,16 +35,23 @@ namespace systems
             gameUI.UpdateHealth();
         }
 
-        // Start is called before the first frame update
-        void Start()
+        // KH - Reset the statistics of the session.
+        public void ResetSessionStatistics()
         {
-
+            score = 0;
         }
 
-        // Update is called once per frame
-        void Update()
+        // KH - Increase the player's score by a inputted amount.
+        public void IncreaseScore(int increase)
         {
+            score += increase;
+            gameUI.UpdateScore();
+        }
 
+        // KH - Method to get the value of 'score'.
+        public int GetScore()
+        {
+            return score;
         }
 
         // KH - Method to access the pause system.

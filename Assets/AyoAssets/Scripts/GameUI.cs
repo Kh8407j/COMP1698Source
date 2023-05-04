@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
+using systems;
 
 public class GameUI : MonoBehaviour
 {
@@ -11,6 +12,10 @@ public class GameUI : MonoBehaviour
     public GameState currentState;
     public TextMeshProUGUI healthText;
     public GameObject allGameUI, mainMenuPanel, pauseMenuPanel, gameOverPanel, titleText;
+
+    // KH
+    [SerializeField] Text scoreDisplay;
+
     // Start is called before the first frame update
     private void Awake()
     {
@@ -112,6 +117,10 @@ public class GameUI : MonoBehaviour
 
     public void StartGame()
     {
+        // KH - Reset statistics from the previous session before starting a new one.
+        GameManager.control.ResetSessionStatistics();
+
+        // Ayo
         SceneManager.LoadScene("Game");
         CheckGameState(GameState.Playing);
     }
@@ -140,5 +149,11 @@ public class GameUI : MonoBehaviour
     public void UpdateHealth()
     {
         healthText.text = systems.GameManager.health.ToString();
+    }
+
+    // KH
+    public void UpdateScore()
+    {
+        scoreDisplay.text = GameManager.control.GetScore().ToString();
     }
 }

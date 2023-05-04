@@ -12,6 +12,14 @@ namespace platformer // KH
 
         // KH
         [SerializeField] float damage = 20f;
+        private Health health;
+        private bool triggeredDeath;
+
+        // KH - Called before 'void Start()'.
+        private void Awake()
+        {
+            health = GetComponent<Health>();
+        }
 
         // Start is called before the first frame update
         void Start()
@@ -27,15 +35,23 @@ namespace platformer // KH
             }
         }
 
-        // Update is called once per frame
-        void Update()
+        // KH - Called on a constant timeline.
+        void FixedUpdate()
         {
+            // Ayo
             if(shouldMove == true)
             {
                 transform.Translate(Vector2.left * instantiator.activeRate * Time.deltaTime);
             }
-        }
 
+            // KH
+            if (health.GetHealth() == 0f && !triggeredDeath)
+            {
+                triggeredDeath = true;
+                anim.SetTrigger("OnEnemyDeath");
+                Destroy(gameObject, .667f);
+            }
+        }
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
@@ -51,15 +67,20 @@ namespace platformer // KH
             }
             if (collision.gameObject.CompareTag("Player"))
             {
-                // KH
-                Health playerHealth = collision.gameObject.GetComponent<Health>();
-                playerHealth.ChangeHealth(-damage);
+                // KH - Check that the enemy isn't dead before dealing damage.
+                if (health.GetHealth() > 0f)
+                {
+                    // KH - Damage the player and instantly kill the enemy.
+                    Health playerHealth = collision.gameObject.GetComponent<Health>();
+                    playerHealth.ChangeHealth(-damage);
+                    health.Kill();
 
-                // Ayo
-                Debug.Log("Collided with player");
-                anim.SetTrigger("OnEnemyDeath");
-                shouldMove = false;
-                Destroy(this.gameObject, .667f);
+                    // Ayo
+                    Debug.Log("Collided with player");
+                    //anim.SetTrigger("OnEnemyDeath"); // KH - Moved this line somewhere in FixedUpdate(). :)
+                    shouldMove = false;
+                    //Destroy(this.gameObject, .667f); // KH - Moved this line too!
+                }
             }
         }
     }

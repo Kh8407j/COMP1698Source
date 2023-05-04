@@ -153,8 +153,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9414f033ac0aa545ad59d792c5c86ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
-  maxHealth: 100
+  health: 10
+  maxHealth: 10
+  gameOverOnDeath: 0
+  increaseScore: 100
 --- !u!50 &2988084486581023829
 Rigidbody2D:
   serializedVersion: 4
@@ -205,3 +207,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   instantiator: {fileID: 0}
+  damage: 20

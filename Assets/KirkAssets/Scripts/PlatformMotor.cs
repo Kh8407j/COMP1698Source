@@ -12,6 +12,7 @@ namespace platformer
         [Header("Motor Statistics")]
         [SerializeField] float moveSpeed = 5f;
         [SerializeField] float jumpHeight = 7f;
+        [SerializeField] float gravity = 9.81f;
 
         [Header("Collision Check Logic")]
         [SerializeField][Range(0.01f, 2f)] float checkRadius = 0.1f;
@@ -29,7 +30,7 @@ namespace platformer
         private bool jumpTrigger;
         private bool facingRight = true;
         private float xScaleAbs;
-        private float gravity = 9.81f;
+        private float gravityDivide = 1f;
 
         // KH - Component references.
         private CapsuleCollider2D col;
@@ -64,7 +65,7 @@ namespace platformer
 
             // KH - Force gravity onto the motor when airborne. Stop once on ground again.
             if (!onGround)
-                yVel -= gravity * Time.fixedDeltaTime;
+                yVel -= (gravity / gravityDivide) * Time.fixedDeltaTime;
             else if (yVel < 0f)
                 HitGround();
 
@@ -292,9 +293,15 @@ namespace platformer
         }
 
         // KH - Method to set the value of 'gravity'.
-        public void SetGravity(float newGravity)
+        //public void SetGravity(float newGravity)
+        //{
+            //gravity = newGravity;
+        //}
+
+        // KH - Method to set the value of 'gravityDivide'.
+        public void SetGravityDivide(float output)
         {
-            gravity = newGravity;
+            gravityDivide = output;
         }
 
         // KH - Method to set the value of 'horOutput'.

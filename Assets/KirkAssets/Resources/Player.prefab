@@ -173,6 +173,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   maxHealth: 100
+  gameOverOnDeath: 1
 --- !u!114 &8103620342023310678
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -191,7 +192,7 @@ MonoBehaviour:
   resetAnimation: Move
   moveSpeedX: 5
   moveSpeedY: 0
-  attackCooldownTime: 0.2
+  attackCooldownTime: 0.4
 --- !u!114 &5738598083465061949
 MonoBehaviour:
   m_ObjectHideFlags: 0
