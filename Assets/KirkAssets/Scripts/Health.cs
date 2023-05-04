@@ -80,6 +80,12 @@ namespace platformer
             ChangeHealth(-health);
         }
 
+        // KH - Method to set the value of 'increaseScore'.
+        public void SetIncreaseScore(int output)
+        {
+            increaseScore = output;
+        }
+
         // KH - Method to get the value of 'health'.
         public float GetHealth()
         {

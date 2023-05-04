@@ -57,14 +57,14 @@ namespace platformer
         void CalculateInput()
         {
             // KH - Previous keyboard input controls, replacing with Arduino controls.
-            horInput = Mathf.RoundToInt(Input.GetAxisRaw("Horizontal"));
-            verInput = Mathf.RoundToInt(Input.GetAxisRaw("Vertical"));
-            holdingFire1 = Mathf.RoundToInt(Input.GetAxisRaw("Fire1"));
+            //horInput = Mathf.RoundToInt(Input.GetAxisRaw("Horizontal"));
+            //verInput = Mathf.RoundToInt(Input.GetAxisRaw("Vertical"));
+            //holdingFire1 = Mathf.RoundToInt(Input.GetAxisRaw("Fire1"));
 
             // KH - Arduino inputs.
-            //verInput = ArduinoController.jumpState;
-            //holdingFire1 = ArduinoController.fireState;
-            //ultrasonicSensor = ArduinoController.power;
+            verInput = ArduinoController.jumpState;
+            holdingFire1 = ArduinoController.fireState;
+            ultrasonicSensor = ArduinoController.power;
         }
 
         // KH - Output the received input values to the output scripts

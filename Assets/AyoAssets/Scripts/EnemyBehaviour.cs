@@ -73,6 +73,9 @@ namespace platformer // KH
                     // KH - Damage the player and instantly kill the enemy.
                     Health playerHealth = collision.gameObject.GetComponent<Health>();
                     playerHealth.ChangeHealth(-damage);
+
+                    // KH - Set the enemy's score worth to zero before instantly killing it so the player doesn't gain.
+                    health.SetIncreaseScore(0);
                     health.Kill();
 
                     // Ayo
